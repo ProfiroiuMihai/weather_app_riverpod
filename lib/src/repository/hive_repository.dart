@@ -23,9 +23,9 @@ class HiveRepository {
   List<NewLocation>  getLocationsFromHive()  {
     try {
       final Box hiveBox = Hive.box<dynamic>(HiveUtil.locationBoxName);
-      final List<NewLocation> _holder =
+      final List<dynamic> _holder =
           hiveBox.get(HiveUtil.locationBoxKey);
-      return _holder;
+      return _holder.map((e) => e as NewLocation).toList();
     } catch (e) {
       return <NewLocation>[];
     }

@@ -11,9 +11,12 @@ import 'package:weather_app_test/src/model/request/add_location.dart';
 import 'package:weather_app_test/src/state_notifiers/add_location/add_location_notifier.dart';
 import 'package:weather_app_test/src/state_notifiers/get_locations/get_location_notifier.dart';
 import 'package:weather_app_test/src/utils/app_router.dart';
+import 'package:weather_app_test/src/utils/constants.dart';
 import 'package:weather_app_test/src/widgets/loading_button_widget.dart';
 import 'package:weather_app_test/src/widgets/text_input_field_widget.dart';
 import 'package:weather_app_test/src/widgets/text_widget.dart';
+
+import '../../repository/map_repository.dart';
 
 class AddLocationScreen extends ConsumerWidget {
   AddLocationScreen({Key? key}) : super(key: key);
@@ -29,22 +32,29 @@ class AddLocationScreen extends ConsumerWidget {
 
   final Completer<GoogleMapController> _mapController = Completer();
 
-  final double _defaultLong = 23.546473;
-  final double _defaultLat = 46.7834818;
   final List<Marker> _markers =
       List.of([const Marker(markerId: MarkerId("center"))]);
-  String coordinates = "";
 
   Future<void> addLocation(BuildContext context, WidgetRef ref) async {
     await ref.read(addLocationProvider.notifier).addLocation(NewLocation(
         startDate: DateTime.now(),
         locationName: _nameLocationController.text,
-        locationLong: _defaultLong,
-        locationLat: _defaultLat));
+        locationLong: _markers.first.position.longitude,
+        locationLat: _markers.first.position.latitude));
     _nameLocationController.clear();
     _addLocationButtonController.success();
     AppRouter.pop(context);
     ref.refresh(getLocationsProvider2);
+  }
+
+  Future<void> getMyLocation(BuildContext context, WidgetRef ref) async {
+    final mapProvider = ref.read(mapCurrentLocationRepository.notifier);
+    await mapProvider.getCurrentLocation();
+    await mapProvider.getCurrentLocationCameraPosition();
+    _mapController.future.then((GoogleMapController mapController) =>
+        mapController.animateCamera(CameraUpdate.newCameraPosition(
+            mapProvider.currentLocationCameraPosition)));
+    _getLocationButtonController.success();
   }
 
   Future<void> changeLocation(WidgetRef ref, LatLng latLng) async {
@@ -88,8 +98,8 @@ class AddLocationScreen extends ConsumerWidget {
     return GoogleMap(
       mapType: MapType.terrain,
       markers: _markers.toSet(),
-      initialCameraPosition: CameraPosition(
-        target: LatLng(_defaultLat, _defaultLong),
+      initialCameraPosition: const CameraPosition(
+        target: defaultLatLng,
         zoom: 10,
       ),
       onMapCreated: (GoogleMapController controller) {
@@ -167,7 +177,9 @@ class AddLocationScreen extends ConsumerWidget {
                       controller: _getLocationButtonController,
                       buttonColor: AppColors.buttonSecondaryColor,
                       label: AppLocalizations.of(context)!.use_my_location,
-                      onPressed: () {},
+                      onPressed: () {
+                        getMyLocation(context, ref);
+                      },
                     )),
               ])),
     );

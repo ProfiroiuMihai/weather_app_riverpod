@@ -10,7 +10,7 @@ import 'package:weather_app_test/src/utils/loading_indicator_widget.dart';
 import 'package:weather_app_test/src/widgets/button_widget.dart';
 import 'package:weather_app_test/src/widgets/error_text_widget.dart';
 import 'package:weather_app_test/src/widgets/text_widget.dart';
-import '../../state_notifiers/get_weather/get_weather.dart';
+
 
 class LocationScreen extends ConsumerStatefulWidget {
   const LocationScreen({Key? key}) : super(key: key);
@@ -27,15 +27,12 @@ class HomeViewState extends ConsumerState<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    // Future.delayed(Duration.zero,() {
-      final provider = ref.watch(getLocationsProvider2);
-    // });
+    final provider = ref.watch(getLocationsProvider2);
 
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 300,left: 24,right: 24),
+          padding: const EdgeInsets.only(top: 30, left: 24, right: 24),
           child: Column(
             children: [
               AppTextWidget(
@@ -51,20 +48,18 @@ class HomeViewState extends ConsumerState<LocationScreen> {
                   )),
               Expanded(
                 child: provider.when(
-                  loading: ()=>const LoadingIndicatorWidget(),
+                  loading: () => const LoadingIndicatorWidget(),
                   data: (List<NewLocation> locations) => ListView.builder(
                       itemCount: locations.length,
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
-                        ref
-                            .read(getWeatherForecast.notifier)
-                            .getWeather(location: locations[index]);
-                        return LocationItem(newLocation: locations[index]);
+                        return LocationItem(
+                          newLocation: locations[index],
+                        );
                       }),
-                  error: (error,s) {
+                  error: (error, s) {
                     return ErrorTextWidget(error: error.toString());
                   },
-
                 ),
               )
             ],

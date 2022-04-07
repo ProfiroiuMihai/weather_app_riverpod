@@ -24,6 +24,7 @@ class _TimerWidgetState extends State<TimerWidget> {
 
   @override
   Widget build(BuildContext context) {
+    _duration = getDurationInSeconds();
     return AppTextWidget(formatDuration(_duration));
   }
 
@@ -31,7 +32,7 @@ class _TimerWidgetState extends State<TimerWidget> {
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
       if (mounted) {
         setState(() {
-          _duration = getDurationInSeconds();
+          // _duration = getDurationInSeconds();
         });
       }
     });

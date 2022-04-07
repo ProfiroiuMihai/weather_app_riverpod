@@ -10,13 +10,14 @@ import 'package:weather_app_test/src/widgets/error_text_widget.dart';
 import 'package:weather_app_test/src/widgets/text_widget.dart';
 
 class LocationItem extends ConsumerWidget {
-  const LocationItem({required this.newLocation, Key? key}) : super(key: key);
+  const LocationItem({required this.newLocation, Key? key})
+      : super(key: key);
   final NewLocation newLocation;
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
-    final provider = ref.watch(getWeatherForecast);
+    final provider = ref.watch(getWeatherForecastFuture(newLocation));
     return Container(
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -33,15 +34,12 @@ class LocationItem extends ConsumerWidget {
             ),
           ),
           provider.when(
-              initial: () => const LoadingIndicatorWidget(),
-              loading: () => const LoadingIndicatorWidget(),
-              success: (weather) {
-                if (weather is WeatherResponse) {
-                  return _buildSuccess(weather);
-                }
-                return const ErrorTextWidget(error: "error");
-              },
-              error: (error) => ErrorTextWidget(error: error)),
+            loading: () => const LoadingIndicatorWidget(),
+            data: (WeatherResponse weather) {
+              return _buildSuccess(weather);
+            },
+            error: (error, s) => ErrorTextWidget(error: error.toString()),
+          ),
         ],
       ),
     );
@@ -73,7 +71,4 @@ class LocationItem extends ConsumerWidget {
       ],
     );
   }
-
 }
-
-
