@@ -2,24 +2,22 @@
 
 A test flutter project.
 
-# Used dependency
-
-# State Management
-Riverpod
-StateNotifier
-Freezed
+## State Management
+- Riverpod
+- StateNotifier
+- Freezed
 
 # Database
-Hive
+- Hive
 
-# Firebase
-FirebaseAuth
+# Network
+- FirebaseAuth
+- Weather API
 
 # Google
-Google Maps
-Geo Location
+- Google Maps
+- Geo Location
 
 # AppConfig
-Internalization
-Dark/Light Theme
-
+- Internalization
+- Dark/Light Theme
