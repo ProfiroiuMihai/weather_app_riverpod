@@ -1,0 +1,27 @@
+{
+  "@@locale": "en",
+  "language": "Language",
+  "@language": {
+    "description": "The selected language"
+  },
+  "sign_in": "Sign in",
+  "sign_up": "Sign up",
+  "maybe_later": "Maybe later",
+  "new_location": "New location",
+  "name": "Name",
+  "add": "Add",
+  "email": "Email",
+  "password": "Password",
+  "use_my_location": "Use my location",
+  "email_already_exists": "User with the email already exists",
+  "create_new_account": "User doesn't exists! Create new account.",
+  "incorrect_email_password_text": "Incorrect email / password",
+  "enter_valid_email": "Please Enter a valid Email",
+  "confirm_email": "Please Confirm your email !",
+  "another_mail": "Use Another Email",
+  "something_went_wrong": "I forget password",
+  "i_forget_password": "I forget password",
+  "i_do_not_have_account": "I do not have an account",
+  "i_already_have_account": "I already have an account",
+  "no_internet_connection": "No internet connection!"
+}

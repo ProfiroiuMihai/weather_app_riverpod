@@ -1,0 +1,7 @@
+{
+  "@@locale": "ro",
+  "language": "Language in ro",
+  "@language": {
+    "description": "The selected language"
+  }
+}
