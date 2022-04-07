@@ -7,17 +7,17 @@ A test flutter project.
 - StateNotifier
 - Freezed
 
-# Database
+## Database
 - Hive
 
-# Network
+## Network
 - FirebaseAuth
 - Weather API
 
-# Google
+## Google
 - Google Maps
 - Geo Location
 
-# AppConfig
+## AppConfig
 - Internalization
 - Dark/Light Theme
