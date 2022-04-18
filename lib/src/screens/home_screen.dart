@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app_test/src/screens/get_locations/location_screen.dart';
 import 'package:weather_app_test/src/screens/profile_screen.dart';
-import 'package:weather_app_test/src/screens/support_screen.dart';
+import 'package:weather_app_test/src/screens/support/support_screen.dart';
 import 'package:weather_app_test/src/utils/bottom_navbar_util.dart';
 
 class HomeScreen extends StatefulWidget {

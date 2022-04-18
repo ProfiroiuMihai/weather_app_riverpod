@@ -21,3 +21,4 @@ A test flutter project.
 ## AppConfig
 - Internalization
 - Dark/Light Theme
+
