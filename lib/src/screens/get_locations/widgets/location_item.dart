@@ -29,12 +29,19 @@ class LocationItem extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: AppTextWidget(
+              "text0",
+              style: CustomTextStyles.text14_300,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AppTextWidget(
               newLocation.locationName,
               style: CustomTextStyles.text14_300,
             ),
           ),
           provider.when(
-            loading: () => const LoadingIndicatorWidget(),
+            loading: () => const LoadingIndicatorWidget(key: Key("location_item_loading"),),
             data: (WeatherResponse weather) {
               return _buildSuccess(weather);
             },
@@ -48,6 +55,11 @@ class LocationItem extends ConsumerWidget {
   Column _buildSuccess(WeatherResponse weatherResponse) {
     return Column(
       children: [
+
+
+
+
+
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: AppTextWidget(

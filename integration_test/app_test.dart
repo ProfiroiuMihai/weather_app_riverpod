@@ -1,4 +1,3 @@
-// Import the test package and Counter class
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +13,6 @@ import 'package:weather_app_test/src/screens/get_locations/location_screen.dart'
 import 'package:weather_app_test/src/state_notifiers/get_locations/get_location_notifier.dart';
 import 'package:weather_app_test/src/utils/loading_indicator_widget.dart';
 import 'package:weather_app_test/src/widgets/error_text_widget.dart';
-
-
 
 void main() {
 
@@ -45,14 +42,14 @@ void main() {
         ],
         supportedLocales: L10n.supportedLocales,
         home:
-            ProviderScope(overrides: [
-              getLocationsProvider2.overrideWithValue(AsyncValue.data(newLocationsList))
-            ], child: const LocationScreen()));
+        ProviderScope(overrides: [
+          getLocationsProvider2.overrideWithValue(AsyncValue.data(newLocationsList))
+        ], child: const LocationScreen()));
   }
 
   testWidgets(
     "title is displayed",
-    (WidgetTester tester) async {
+        (WidgetTester tester) async {
       Widget widgetToPump = await createWidgetUnderTest();
       await tester.pumpWidget(widgetToPump);
 
@@ -62,7 +59,7 @@ void main() {
 
   testWidgets(
     "locations are displayed",
-    (WidgetTester tester) async {
+        (WidgetTester tester) async {
       // whenReturnNewLocationList();
       Widget widgetToPump = await createWidgetUnderTest();
       await tester.pumpWidget(widgetToPump);
