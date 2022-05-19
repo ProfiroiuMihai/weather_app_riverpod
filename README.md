@@ -22,3 +22,6 @@ A test flutter project.
 - Internalization
 - Dark/Light Theme
 
+## Tests
+- Unit test
+- Widget test
