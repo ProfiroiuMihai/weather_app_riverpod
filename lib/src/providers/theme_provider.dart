@@ -5,6 +5,22 @@ import 'package:weather_app_test/src/utils/global_values.dart';
 
 import '../utils/secure_storage_util.dart';
 
+ThemeData darkTheme = ThemeData(
+  primaryColor: Colors.black,
+  scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
+
+);
+
+
+ThemeData lightTheme = ThemeData(
+  primaryColor: Colors.white,
+  scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
+
+
+);
+
+
+
 class ThemeNotifier with ChangeNotifier {
   String _theme = "light";
 
@@ -18,13 +34,14 @@ class ThemeNotifier with ChangeNotifier {
     return _theme == 'dark' ? true : false;
   }
 
-  void getTheme() {
+  ThemeData getTheme() {
     SystemChrome.setSystemUIOverlayStyle(
       _theme == 'light'
           ? SystemUiOverlayStyle.dark
           : SystemUiOverlayStyle.light,
     );
-    AppColors.loadColors(GlobalValues.navKey.currentContext!);
+    // AppColors.loadColors(GlobalValues.navKey.currentContext!);
+    return _theme == 'light' ? lightTheme : darkTheme;
   }
 
   _loadThemeFromLocalStorage() async {

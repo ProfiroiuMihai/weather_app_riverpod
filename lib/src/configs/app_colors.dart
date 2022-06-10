@@ -12,11 +12,11 @@ class AppColors {
 
   ///a method to initialize the color values based on brightness (light, dark)
   static void loadColors(BuildContext context) {
-    if (AppUtils.isLightMode(context)) {
-      _loadLightThemeColors();
-    } else {
-      _loadDarkThemeColors();
-    }
+    // if (AppUtils.isLightMode(context)) {
+    //   _loadLightThemeColors();
+    // } else {
+       _loadDarkThemeColors();
+    // }
   }
 
   ///All color names used in the app
@@ -67,7 +67,7 @@ class AppColors {
   ///Dark Theme Colors, add _d prefix for dark colors
   //Dark theme Colors are to be defined, using light theme colors for now!!
   //text colors for dark theme
-  static const Color _dTextPrimaryColor = Color(0xFF222831);
+  static const Color _dTextPrimaryColor = Color(0xFFFFFFFF);
   static const Color _dTextSecondaryColor = Color(0xFF83839C);
   static const Color _dLinkTextColor = Color(0xFF2E7FDF);
   static const Color _dHintTextColor = Color(0xFFC6C7CA);

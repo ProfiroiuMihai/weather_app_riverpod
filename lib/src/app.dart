@@ -15,21 +15,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ///load colors based on light or dark theme.
-    AppColors.loadColors(context);
+
 
     return Consumer2<AppLanguageProvider, ThemeNotifier>(
       builder: (BuildContext context, AppLanguageProvider provider1,
           ThemeNotifier provider2, Widget? child) {
+        AppColors.loadColors(context);
         return MaterialApp(
           navigatorKey: GlobalValues.navKey,
           debugShowCheckedModeBanner: false,
           title: 'Security App',
           themeMode:
               provider2.theme == 'dark' ? ThemeMode.dark : ThemeMode.light,
-          theme: ThemeData(
-            primaryColor: Colors.black,
-            scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
-          ),
+          theme: provider2.getTheme(),
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
