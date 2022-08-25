@@ -20,7 +20,7 @@ void main() {
 
       expect(FormUtils.validatePassword("aadsadasdaaom"), null);
 
-      expect(FormUtils.validatePassword("asdgdfgdfgdfas"), "Password too short");
+      expect(FormUtils.validatePassword("adfas"), "Password too short");
 
     });
 
