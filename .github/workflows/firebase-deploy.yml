@@ -23,5 +23,5 @@ jobs:
         - name: Run Fastlane #Give a name to your action
           uses: maierj/fastlane-action@v1.4.0 #Use this plugin developed by the community for the fastlane actions
           with:
-            lane: upload_to_google_play_store #Here you can define the lane need to be executed with the work flow.
+            lane: upload_firebase #Here you can define the lane need to be executed with the work flow.
             subdirectory: android #mention if the fastlane folder is inside the android folder.

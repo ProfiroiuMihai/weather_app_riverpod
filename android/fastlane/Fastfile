@@ -21,18 +21,38 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+  desc “Firebase testing”
+  lane :upload_firebase do
+  begin
+  gradle(
+  task: “assemble”,
+  build_type: ‘Debug’
+  )
+  firebase_app_distribution(
+  app: “1:297830272300:android:d885e35be589f8cf9e3089”,
+  firebase_cli_token: “1//0gc9V10iqbz-aCgYIARAAGBASNwF-L9Irro4vffKKaOJ5peLc6JIm0Ri9wItAzsAoXA2QcXrelbm-fDaeuWjAapeiaPQzwf1vCeA”,
+  groups: “allianze-testers”,
+  release_notes: “RELEASE-NOTE”,
+  android_artifact_type: “APK”,
+  firebase_cli_path: “/usr/local/bin/firebase”,
+  apk_path: “../build/app/outputs/apk/debug/app-debug.apk”,
+  )
+  end
   end
 
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
-  end
+
+#   desc "Submit a new Beta Build to Crashlytics Beta"
+#   lane :beta do
+#     gradle(task: "clean assembleRelease")
+#     crashlytics
+#
+#     # sh "your_script.sh"
+#     # You can also use other beta testing services here
+#   end
+#
+#   desc "Deploy a new version to the Google Play"
+#   lane :deploy do
+#     gradle(task: "clean assembleRelease")
+#     upload_to_play_store
+#   end
 end
