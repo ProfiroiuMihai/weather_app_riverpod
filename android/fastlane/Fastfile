@@ -29,8 +29,8 @@ platform :android do
   build_type: ‘Debug’
   )
   firebase_app_distribution(
-  app: “1:297830272300:android:d885e35be589f8cf9e3089”,
-  firebase_cli_token: “1//0gc9V10iqbz-aCgYIARAAGBASNwF-L9Irro4vffKKaOJ5peLc6JIm0Ri9wItAzsAoXA2QcXrelbm-fDaeuWjAapeiaPQzwf1vCeA”,
+  app: “1:213294207398:android:947c21bbfe027393583f67”,
+  firebase_cli_token: “1//09XdGhqz6_bjICgYIARAAGAkSNwF-L9IrkZVSphvm_cJNrp49_qjDxzfkOoAnmkmJCKsuYjjng98JT90Z5sJkJ1L3zKeERnd37O0”,
   groups: “allianze-testers”,
   release_notes: “RELEASE-NOTE”,
   android_artifact_type: “APK”,
