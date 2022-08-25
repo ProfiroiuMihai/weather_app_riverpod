@@ -31,7 +31,7 @@ platform :android do
   firebase_app_distribution(
   app: “1:213294207398:android:947c21bbfe027393583f67”,
   firebase_cli_token: “1//09XdGhqz6_bjICgYIARAAGAkSNwF-L9IrkZVSphvm_cJNrp49_qjDxzfkOoAnmkmJCKsuYjjng98JT90Z5sJkJ1L3zKeERnd37O0”,
-  groups: “allianze-testers”,
+  groups: “testers-grup”,
   release_notes: “RELEASE-NOTE”,
   android_artifact_type: “APK”,
   firebase_cli_path: “/usr/local/bin/firebase”,
