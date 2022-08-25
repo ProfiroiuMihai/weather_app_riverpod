@@ -1,5 +1,5 @@
 name: learn-github-actions
-  on:
+  'on':
 push:
 branches:
   - release
